@@ -1,9 +1,18 @@
 import argparse
 import operator
+import math
 
 def process(a, op_name, b):
-    op = getattr(operator, op_name)
-    return op(a, b)
+    op = getattr(operator, op_name, None)
+    if op:
+        return op(a, b)
+
+    op = getattr(math, op_name, None)
+    if op:
+        return op(a, b)
+
+    print("Invalid operator name")
+    exit()
 
 if __name__ == "__main__" :
     parser = argparse.ArgumentParser(description="Take two integer values and operator")
