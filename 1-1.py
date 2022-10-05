@@ -1,6 +1,10 @@
 import argparse
 
 def process(val_1, op, val_2):
+    if not val_2:
+        print("You can't divide by zero.")
+        exit()
+
     if op == "+":
         return val_1 + val_2
     elif op == "-":
@@ -13,6 +17,7 @@ def process(val_1, op, val_2):
         print("Invalid operator")
         exit()
 
+        
 if __name__ == "__main__" :
     parser = argparse.ArgumentParser(description="Take two integer values - ")
 
