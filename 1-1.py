@@ -2,8 +2,7 @@ import argparse
 
 def process(val_1, op, val_2):
     if not val_2:
-        print("You can't divide by zero.")
-        exit()
+        raise ZeroDivisionError("Division by 0")
 
     if op == "+":
         return val_1 + val_2
