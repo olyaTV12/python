@@ -13,8 +13,7 @@ def process(val_1, op, val_2):
     elif op == "/":
         return val_1 / val_2
     else:
-        print("Invalid operator")
-        exit()
+        raise AttributeError("Invalid operator")
 
         
 if __name__ == "__main__" :
