@@ -1,9 +1,6 @@
 import argparse
 
 def process(val_1, op, val_2):
-    if not val_2:
-        raise ZeroDivisionError("Division by 0")
-
     if op == "+":
         return val_1 + val_2
     elif op == "-":
@@ -11,6 +8,8 @@ def process(val_1, op, val_2):
     elif op == "*":
         return val_1 * val_2
     elif op == "/":
+        if not val_2:
+            raise ZeroDivisionError("Division by 0")
         return val_1 / val_2
     else:
         raise AttributeError("Invalid operator")
