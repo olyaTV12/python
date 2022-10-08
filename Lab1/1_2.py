@@ -3,6 +3,9 @@ import operator
 import math
 
 def process(a, op_name, b):
+    if op_name == '/' and b == 0:
+        return None
+
     op = getattr(operator, op_name, None)
     if op:
         return op(a, b)
