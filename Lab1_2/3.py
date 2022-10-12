@@ -9,7 +9,7 @@ class Product:
         self.__description = description
 
     def __str__(self):
-        return f'Price: {self.price}, Desctiption: {self.__description}\n'
+        return f'Price: {self.__price}, Desctiption: {self.__description}\n'
 
     @property
     def price(self):
