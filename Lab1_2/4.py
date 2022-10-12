@@ -7,24 +7,24 @@ class TextFileProcessing:
         self.__file = file_name
 
     def __str__(self):
-        return f'Words: {self.words()}\
-                \nCharacters: {self.characters()}\
-                \nSentences : {self.sentences()}'
+        return f'Words: {self.words_count()}\
+                \nCharacters: {self.characters_count()}\
+                \nSentences : {self.sentences_count()}'
 
-    def words(self):
+    def words_count(self):
         with open(self.__file) as file:
             data = file.read()
             lines = data.split()
             words_num = len(lines)
             return words_num
 
-    def characters(self):
+    def characters_count(self):
         with open(self.__file) as file:
             data = file.read().replace(' ', '')
             characters_num = len(data)
             return characters_num
 
-    def sentences(self):
+    def sentences_count(self):
         with open(self.__file) as file:
             data = file.read()
             sentences_count = sum(map(data.count, ['.', '!', '?']))
