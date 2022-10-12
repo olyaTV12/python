@@ -29,6 +29,3 @@ class TextFileProcessing:
             data = file.read()
             sentences_count = sum(map(data.count, ['.', '!', '?']))
             return sentences_count
-
-file_1 = TextFileProcessing('text.txt')
-print(file_1)
