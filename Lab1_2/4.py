@@ -23,9 +23,7 @@ class TextFileProcessing:
         chars = 0
         with open(self.__file) as f:
             for line in f:
-                for c in line:
-                    if c != ' ':
-                        chars += 1
+                chars += sum(1 for c in line if c != ' ')
             return chars
 
     def sentences_count(self):
