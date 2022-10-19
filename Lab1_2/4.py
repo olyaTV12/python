@@ -1,4 +1,5 @@
 from os.path import exists as file_exists
+import re
 
 class TextFileProcessing:
     def __init__(self, file_name):
@@ -12,20 +13,26 @@ class TextFileProcessing:
                 \nSentences : {self.sentences_count()}'
 
     def words_count(self):
-        with open(self.__file) as file:
-            data = file.read()
-            lines = data.split()
-            words_num = len(lines)
-            return words_num
+        words = 0
+        with open(self.__file) as f:
+            for lines in f:
+                words += len(lines.split())
+        return words
 
     def characters_count(self):
-        with open(self.__file) as file:
-            data = file.read().replace(' ', '')
-            characters_num = len(data)
-            return characters_num
+        chars = 0
+        with open(self.__file) as f:
+            for line in f:
+                for c in line:
+                    if c != ' ':
+                        chars += 1
+            return chars
 
     def sentences_count(self):
-        with open(self.__file) as file:
-            data = file.read()
-            sentences_count = sum(map(data.count, ['.', '!', '?']))
-            return sentences_count
+        sentences = 0
+        with open(self.__file) as f:
+            for lines in f:
+                if not lines.endswith('.' or '!' or '?'):
+                    sentences -= 1
+                sentences += len(re.split(r"[.!?]+", lines))
+        return sentences
